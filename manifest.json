@@ -1,0 +1,14 @@
+{
+    "name": "lonely cat timer",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "action": {
+        "default_icon": {"32": "images/icon.png"
+        },
+        "default_popup": "popup.html"
+    }
+}
