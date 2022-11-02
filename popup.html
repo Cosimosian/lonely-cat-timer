@@ -1,15 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>lonely cat timer</title>
-  <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="popup.css">
-</head>
-<body>
-    <script src="bootstrap/bootstrap.min.js"></script>
-    <script src="popup.js"></script>
-    
-      
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>lonely cat timer</title>
+    <!-- <link rel="stylesheet" href="bootstrap/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <style>
+    body {
+      width: 360px;
+      height: 340px;
+    }
+
+    * {
+      margin: 0;
+      border: 1px solid black;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex1 {
+      flex: 1;
+    }
+
+    .column {
+      flex-direction: column;
+    }
+
+    .nav {
+      width: 70px;
+    }
+
+    .tablist {
+      height: 140px;
+    }
+
+    .btnlist {
+      height: 140px;
+    }
+
+    .tabBtn {
+      height: 70px;
+    }
+    .funcBtn {
+    }
+    .tabbox{
+      width: 290px;
+    }
+    .tab{
+      height: 340px;
+    }
+    .tab2 {
+      display: none;
+    }
+
+    .active{
+      background-color: bisque;
+    }
+  </style>
+
+  <body class="flex">
+    <!-- 左边侧导航栏 -->
+    <div class="nav flex column">
+      <!-- 页面切换导航标签 -->
+      <div class="tablist flex column">
+        <!-- 计时 -->
+        <div class="tabBtn active" style="height: 70px;">计时。</div>
+        <!-- 闹钟 -->
+        <div class="tabBtn" style="height: 70px;">闹钟。</div>
+      </div>
+
+      <!-- 主功能按钮 -->
+      <div class="btnlist flex column">
+        <!-- 猫猫  -->
+        <div class="flex1 funcBtn">猫猫</div>
+        <!-- 白噪  -->
+        <div class="flex1 funcBtn">白噪</div>
+      </div>
+    </div>
+
+    <!-- 右边内容面板 -->
+    <div class="flex1 tabbox">
+      <div class="tab tab1" style="background-color: aqua">
+        <span>正计时</span>
+        <!-- 表盘 最多计时60分钟-->
+        <!-- <div class="flex" style="padding: 10px;">
+          <div class="m">
+            <span id="m1">0</span>
+            <span id="m2">0</span>
+          </div>
+          <span>:</span>
+          <div class="s">
+            <span id="s1">0</span>
+            <span id="s2">0</span>
+          </div>
+        </div>
+        <button>暂停</button> -->
+      </div>
+      <div class="tab tab2" style="background-color: pink">闹钟</div>
+    </div>
+  </body>
+
+  <!-- <script src="bootstrap/bootstrap.min.js"></script> -->
+  <script src="popup.js"></script>
+  <script>
+    var tablist = document.querySelectorAll(".tabBtn");
+    var tabboxes = document.querySelectorAll(".tab");
+    for (let i = 0; i < tablist.length; i++) {
+      tablist[i].onclick = function () {
+        for (let j = 0; j < tabboxes.length; j++) {
+          tabboxes[j].style.display = "none";
+          tablist[j].removeAttribute("class");
+        }
+        tabboxes[i].style.display = "block";
+        tablist[i].setAttribute("class","tabBtn active");
+      };
+    }
+    console.log(tabboxes);
+  </script>
 </html>
