@@ -1,123 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>lonely cat timer</title>
-    <!-- <link rel="stylesheet" href="bootstrap/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="popup.css" />
-  </head>
-  <style>
-    body {
-      width: 360px;
-      height: 340px;
-    }
 
-    * {
-      margin: 0;
-      border: 1px solid black;
-    }
+<head>
+  <meta charset="UTF-8" />
+  <title>lonely cat timer</title>
+  <!-- <link rel="stylesheet" href="bootstrap/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<style>
 
-    .flex {
-      display: flex;
-    }
+</style>
 
-    .flex1 {
-      flex: 1;
-    }
-
-    .column {
-      flex-direction: column;
-    }
-
-    .nav {
-      width: 70px;
-    }
-
-    .tablist {
-      height: 140px;
-    }
-
-    .btnlist {
-      height: 140px;
-    }
-
-    .tabBtn {
-      height: 70px;
-    }
-    .funcBtn {
-    }
-    .tabbox{
-      width: 290px;
-    }
-    .tab{
-      height: 340px;
-    }
-    .tab2 {
-      display: none;
-    }
-
-    .active{
-      background-color: bisque;
-    }
-  </style>
-
-  <body class="flex">
-    <!-- 左边侧导航栏 -->
-    <div class="nav flex column">
-      <!-- 页面切换导航标签 -->
-      <div class="tablist flex column">
-        <!-- 计时 -->
-        <div class="tabBtn active" style="height: 70px;">计时。</div>
-        <!-- 闹钟 -->
-        <div class="tabBtn" style="height: 70px;">闹钟。</div>
-      </div>
-
-      <!-- 主功能按钮 -->
-      <div class="btnlist flex column">
-        <!-- 猫猫  -->
-        <div class="flex1 funcBtn">猫猫</div>
-        <!-- 白噪  -->
-        <div class="flex1 funcBtn">白噪</div>
-      </div>
+<body class="flex">
+  <!-- 左边侧导航栏 -->
+  <div class="nav flex column">
+    <!-- 页面切换导航标签 -->
+    <div class="tablist flex column">
+      <!-- 计时 -->
+      <div class="tabBtn active" style="height: 70px;">计时。</div>
+      <!-- 闹钟 -->
+      <div class="tabBtn" style="height: 70px;">闹钟。</div>
     </div>
 
-    <!-- 右边内容面板 -->
-    <div class="flex1 tabbox">
-      <div class="tab tab1" style="background-color: aqua">
-        <span>正计时</span>
-        <!-- 表盘 最多计时60分钟-->
-        <!-- <div class="flex" style="padding: 10px;">
-          <div class="m">
-            <span id="m1">0</span>
-            <span id="m2">0</span>
-          </div>
-          <span>:</span>
-          <div class="s">
-            <span id="s1">0</span>
-            <span id="s2">0</span>
+    <!-- 主功能按钮 -->
+    <div class="btnlist flex column">
+      <!-- 猫猫  -->
+      <div class="flex1 funcBtn">猫猫</div>
+      <!-- 白噪  -->
+      <div class="flex1 funcBtn">白噪</div>
+    </div>
+  </div>
+
+  <!-- 右边内容面板 -->
+  <div class="flex1 tabbox">
+    <!-- tab1计时 -->
+    <div class="tab tab1" style="background-color: aqua">
+      <!-- 选择计时模式 -->
+      <div id="clocker_choose">
+        <input type="radio" name="clock" id="count_Check" checked=true>正计时</input>
+        <input type="radio" name="clock" id="countdown_Check" unchecked>倒计时</input>
+      </div>
+      <!-- 表盘 最多计时60分钟-->
+      <div class="flex" style="padding: 10px;">
+        <div class="m">
+          <span class="t" id="m1">0</span>
+          <span class="t" id="m2">0</span>
+        </div>
+        <span>:</span>
+        <div class="s">
+          <span class="t" id="s1">0</span>
+          <span class="t" id="s2">0</span>
+        </div>
+      </div>
+      <button id="count_Btn">计时</button>
+      <button id="reset_Btn">重置</button>
+    </div>
+    <!-- tab2闹钟 -->
+    <div class="tab tab2" style="background-color: pink">
+      <!-- 闹钟提醒 -->
+      <div id="alarm_clock" class="flex1">
+        <span>闹钟提醒</span>
+        <input type="checkbox" >开启</input>
+        <div class="flex">
+          <div>请在<span id="alarm_h">13</span>:<span id="alarm_m">25</span>时提醒我</div>
+          <button id="alarm_addBtn">添加闹钟提醒</button>
+        </div>
+        <input type="text" id="alarm_addNote">
+        <div class="flex">
+          <button id="unfold_Btn">+</button>
+          <span>已有提醒</span>
+        </div>
+        <!-- 可收起展开的提醒列表 -->
+        <div id="alarm_noteList" class="noteList_content">
+          <div>
+            <span>13</span>:
+            <span>45</span>
+            <span>取快递</span>
+            <button>-</button>
           </div>
         </div>
-        <button>暂停</button> -->
-      </div>
-      <div class="tab tab2" style="background-color: pink">闹钟</div>
+        
     </div>
-  </body>
+  </div>
+</body>
 
-  <!-- <script src="bootstrap/bootstrap.min.js"></script> -->
-  <script src="popup.js"></script>
-  <script>
-    var tablist = document.querySelectorAll(".tabBtn");
-    var tabboxes = document.querySelectorAll(".tab");
-    for (let i = 0; i < tablist.length; i++) {
-      tablist[i].onclick = function () {
-        for (let j = 0; j < tabboxes.length; j++) {
-          tabboxes[j].style.display = "none";
-          tablist[j].removeAttribute("class");
-        }
-        tabboxes[i].style.display = "block";
-        tablist[i].setAttribute("class","tabBtn active");
-      };
-    }
-    console.log(tabboxes);
-  </script>
+<!-- <script src="bootstrap/bootstrap.min.js"></script> -->
+<script src="popup.js"></script>
+
 </html>
