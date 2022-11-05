@@ -4,11 +4,14 @@
     "manifest_version": 3,
     "permissions": [
         "activeTab",
-        "scripting"
+        "scripting",
+        "notifications",
+        "runtime"
     ],
     "action": {
         "default_icon": {"32": "images/icon.png"
         },
         "default_popup": "popup.html"
     }
+
 }

@@ -1,0 +1,63 @@
+body {
+    width: 360px;
+    height: 340px;
+  }
+
+  * {
+    margin: 0;
+    border: 1px solid black;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .flex1 {
+    flex: 1;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  .nav {
+    width: 70px;
+  }
+
+  .tablist {
+    height: 140px;
+  }
+
+  .btnlist {
+    height: 140px;
+  }
+
+  .tabBtn {
+    height: 70px;
+  }
+
+  .funcBtn {
+    height: 70px;
+  }
+
+  .tabbox {
+    width: 290px;
+  }
+
+  .tab {
+    height: 340px;
+  }
+
+  .tab1 {
+    display: none;
+  }
+
+  .active {
+    background-color: bisque;
+  }
+  .noteList_content{
+    display: none;
+  }
+  .show{
+    display: block;
+  }

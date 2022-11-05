@@ -111,4 +111,28 @@ function AddAlarm(){
 }
 alarmAddBtn.addEventListener('click',AddAlarm);
 
+// -----------------------------------------猫猫--------------------------------------------------------------
+let catBtn = document.getElementById('cat_btn');
+console.log('欸嘿');
+catBtn.addEventListener('click', function(){
+    chrome.notifications.create(
+        'ddd',
+        {
+            type: 'basic',
+            title: '到啦!',
+            message: '111',
+            iconUrl: 'images/icon.png',
+        }
+    );    
+});
+
+// ------------------------------------------音乐-------------------------------------------------------------
+// --------------------点击播放/暂停白噪音--------------------------------------
+let musicBtn = document.getElementById('music_btn');
+let musicPlayer = document.getElementById('white_noise');
+function PlayMusic(){
+    if(musicPlayer.paused) musicPlayer.play();
+    else musicPlayer.pause();
+}
+musicBtn.addEventListener('click', PlayMusic);
 

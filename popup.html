@@ -25,9 +25,14 @@
     <!-- 主功能按钮 -->
     <div class="btnlist flex column">
       <!-- 猫猫  -->
-      <div class="flex1 funcBtn">猫猫</div>
+      <div class="funcBtn" style="height: 70px;">        
+        <button id="cat_btn">猫猫。</button>
+      </div>
       <!-- 白噪  -->
-      <div class="flex1 funcBtn">白噪</div>
+      <div class="funcBtn" style="height: 70px;">
+        <button id="music_btn">白噪。</button>
+        <audio src="./sounds/blow.mp3" id="white_noise" loop></audio>
+      </div>
     </div>
   </div>
 
@@ -86,5 +91,5 @@
 
 <!-- <script src="bootstrap/bootstrap.min.js"></script> -->
 <script src="popup.js"></script>
-
+<script src="background.js"></script>
 </html>
